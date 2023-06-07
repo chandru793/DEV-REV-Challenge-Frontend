@@ -1,10 +1,24 @@
-.innerContainer{
-    height: 100vh;
+.addbook{
+    /* width: 75.4vw; */
+    margin-left: 250px;
+    align-self: self-end;
+}
+.pagename{
+    background-color: #272727;
+    padding: 20px;
+}
+.hh3{
+    margin: 0;
+    padding: 0;
+}
+
+.innerContainerA{
+    height: 90vh;
     width: 100%;    
     /* align-items: center; */
     background-color: #0d0d0d;
 }
-.detailsContainer{
+.detailsContainerA{
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -19,17 +33,42 @@
     border-radius: 5px;
 
 }
-.h1{
-    color: #fff;
-    margin: 0;  
-    margin-bottom: 20px;
-    font-size: xx-large;
+.lendbook{
+    margin-left: 250px;
+    align-self: self-end;
+}
+.pagename{
+    background-color: #272727;
+    padding: 20px;
+}
+.hh3{
+    margin: 0;
+    padding: 0;
+}
+.sideTopic{
+    align-self: center;
+    margin: 5px;
+    margin-top: 15px;
+    text-decoration: underline;
+}
+.separator{
+    display: flex;
+    flex-direction: column;
+}
+.separator1{
+    display: flex;
+    flex-direction: row;
+}
+.separator2{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    margin: 5px 10px;
 }
 
 .form{
     display: flex;
     flex-direction: column;
-    /* margin: 5px; */
     align-items: start;
 }
 label{
@@ -47,21 +86,15 @@ label{
     color: #fff;
     background-color: #272727;
 }
-.button{
+.buttona{
     margin: 5px;
     margin-top: 20px;
     padding: 15px;
-    width: 330px;
+    width: 680px;
     border-radius: 5px;
     outline: none;
     border: none;
+    align-self: center;
     background-color: #1a7fc1;
     color: #fff;
-}
-
-.p{
-    color:white;
-    font-size: small;
-    margin-left: 5px;
-    text-align: left;
 }

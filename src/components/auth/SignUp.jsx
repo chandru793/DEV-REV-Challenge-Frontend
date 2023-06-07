@@ -1,25 +1,50 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../assets/css/Login.css';
 
 const SignIn = () => {
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [pwd, setPwd] = useState('');
+    const [password, setPassword] = useState('');
+    const [show, setshow] = useState(false);
+
+    async function registerUser(event) {
+        event.preventDefault()
+        const response = await fetch(`http://localhost:8080/api/signup`, {
+            method: `POST`,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name,
+                email,
+                password,
+            }),
+        })
+
+        const data = await response.json()
+        console.log(data);
+
+        if (data.status === "ok") {
+            navigate("/login")
+        }
+    }
+
     return (
         <div>
             <div className="innerContainer">
                 <div className="detailsContainer">
                     <div className='inner-inner'>
                         <h1 className='h1'>CREATE ACCOUNT</h1>
-                        <form>
+                        <form onSubmit={registerUser} className='form'>
                             <label for="name">Name:</label>
                             <input
-                                type='name'
+                                type='text'
                                 name='name'
                                 id='name'
                                 className='input'
-                                placeholder='Enter your email'
+                                placeholder='Enter your name'
                                 required
                                 value={name}
                                 onChange={e => setName(e.target.value)}
@@ -45,18 +70,18 @@ const SignIn = () => {
                                 className='input'
                                 placeholder='Enter your Password'
                                 required
-                                value={pwd}
-                                onChange={e => setPwd(e.target.value)}
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
                             />
 
-                            {/* {show ? <p>All the fields are required</p> : null} */}
-                            <button
+                            {show ? <p style={{ color: 'red', fontStyle: 'italic', marginLeft: '10px' }}>All the fields are required</p> : null}
+                            <input
+                                type='submit'
+                                value='Sign Up'
                                 className='button'
-                            // onClick={() => validate()}
-                            >Submit
-                            </button>
+                            />
                         </form>
-                        <p className='p'>Already have an account? <Link Link to="/login" style={{ textDecoration: 'none', color: '#1a7fc1', fontStyle:'italic' }}>Login</Link></p>
+                        <p className='p'>Already have an account? <Link Link to="/login" style={{ textDecoration: 'none', color: '#1a7fc1', fontStyle: 'italic' }}>Login</Link></p>
                     </div>
                 </div>
             </div>

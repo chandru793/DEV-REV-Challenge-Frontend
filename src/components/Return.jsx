@@ -1,32 +1,31 @@
-import React, { useState,useEffect } from 'react';
+import React, { useEffect, useState } from 'react'
+import SearchIcon from '@mui/icons-material/Search';
 import Fab from '@mui/material/Fab';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import SearchIcon from '@mui/icons-material/Search';
 import { styled } from '@mui/system';
 import TablePagination, {
     tablePaginationClasses as classes,
 } from '@mui/base/TablePagination';
-import '../assets/css/Status.css'
+import moment from 'moment';
+import '../assets/css/Return.css'
 
 //components
-import Sidebar from './Sidebar';
+import Sidebar from './Sidebar'
 
 //api
-import { getAllBook } from './Api';
+import { getLendBook,deleteLendBook } from './Api';
 
-const Status = () => {
+const Return = () => {
 
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [lend, setLend] = useState([]);
 
-    const [library, setLibrary] = useState([]);
-
-    const filteredBooks = library.filter(items =>
+    const filteredBooks = lend.filter(items =>
         (items.bookName != null && items.bookName.toLowerCase().includes(search.toLowerCase())) ||
         (items.authorName != null && items.authorName.toLowerCase().includes(search.toLowerCase())) ||
-        (items.genre != null && items.genre.toLowerCase().includes(search.toLowerCase())) ||
-        (items.publishedYear != null && items.publishedYear.toString().toLowerCase().includes(search.toString().toLowerCase()))
+        (items.studentName != null && items.studentName.toLowerCase().includes(search.toLowerCase()))
     );
 
     // Avoid a layout jump when reaching the last page with empty rows.
@@ -43,6 +42,7 @@ const Status = () => {
     };
 
     const blue = {
+        300:'#64b5f6',
         400: '#3399FF',
     };
 
@@ -146,9 +146,9 @@ const Status = () => {
     );
 
     useEffect(() => {
-        getAllBook()
+        getLendBook()
             .then((res) => {
-                setLibrary(res.data.books);
+                setLend(res.data.books);
             })
             .catch((err) => {
                 console.log(err);
@@ -161,9 +161,9 @@ const Status = () => {
                 <Sidebar />
             </div>
 
-            <div className="status">
+            <div className="returnbook">
                 <div className="pagename">
-                    <h3 className='hh3'>Status</h3>
+                    <h3 className='hh3'>Return book</h3>
                 </div>
 
                 <div className="search">
@@ -190,18 +190,20 @@ const Status = () => {
                                     <th>AUTHOR NAME</th>
                                     <th>PUBLISHER NAME</th>
                                     <th>PUBLISHED YEAR</th>
-                                    <th>GENRE</th>
-                                    <th>TOTAL COUNT</th>
-                                    <th>STATUS</th>
+                                    <th>STUDENT NAME</th>
+                                    <th>STUDENT ID</th>
+                                    <th>DUE DATE</th>
+                                    <th>Return</th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 {(rowsPerPage > 0
                                     ? filteredBooks.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                     : filteredBooks
                                 ).map((row) => (
                                     <tr key={row._id}>
-                                        <td>{row.bookName}</td>
+                                        <td style={{ width: 120 }}>{row.bookName}</td>
                                         <td style={{ width: 120 }} align="right">
                                             {row.authorName}
                                         </td>
@@ -212,19 +214,19 @@ const Status = () => {
                                             {row.publishedYear}
                                         </td>
                                         <td style={{ width: 150 }} align="right">
-                                            {row.genre}
+                                            {row.studentName}
                                         </td>
                                         <td style={{ width: 120 }} align="right">
-                                            {row.count}
+                                            {row.StudentId}
+                                        </td>
+                                        <td style={{ width: 120 }} align="right">
+                                            {moment((row.dueDate).split('T')[0]).format('D/MM/YYYY')}
                                         </td>
                                         <td style={{ width: 150 }} align="right">
-                                            {row.status ? (<Fab variant="extended" size="small" color="success" aria-label="add" sx={{ fontSize: 'x-small' }}>
+                                            {<Fab variant="extended" size="small" color='warning' aria-label="add" sx={{ fontSize: 'x-small' }} onClick={() => { deleteLendBook(row._id); window.location.reload(); }}>
                                                 <FiberManualRecordIcon sx={{ mr: 0.5, fontSize: 'medium' }} />
-                                                Available
-                                            </Fab>) : (<Fab variant="extended" size="small" color="error" aria-label="add" sx={{ fontSize: 'x-small' }}  >
-                                                <FiberManualRecordIcon sx={{ mr: 0.5, fontSize: 'medium' }} />
-                                                Not Available
-                                            </Fab>)}
+                                                Return
+                                            </Fab>}
                                         </td>
                                     </tr>
                                 ))}
@@ -240,7 +242,7 @@ const Status = () => {
                                 <tr>
                                     <CustomTablePagination
                                         rowsPerPageOptions={[10, 20, 30, { label: 'All', value: -1 }]}
-                                        colSpan={7}
+                                        colSpan={8}
                                         count={filteredBooks.length}
                                         rowsPerPage={rowsPerPage}
                                         page={page}
@@ -266,4 +268,4 @@ const Status = () => {
     )
 }
 
-export default Status
+export default Return

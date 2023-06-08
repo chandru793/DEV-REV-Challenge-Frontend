@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../assets/css/LendBook.css'
 import moment from 'moment/moment';
+import { lendBook } from './Api';
 
 //components
 import Sidebar from './Sidebar';
@@ -20,6 +21,7 @@ const LendBook = () => {
 
     const toast = (e) => {
         e.preventDefault();
+        lendBook(LLbname, LLauthor, LLpublisher, LLyear, LLsname, LLsid, LLdate, LLrdate);
         updated();
         setLLbname('');
         setLLauthor('');

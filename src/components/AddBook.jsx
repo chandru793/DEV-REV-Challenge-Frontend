@@ -3,6 +3,7 @@ import '../assets/css/AddBook.css'
 
 //components
 import Sidebar from './Sidebar';
+import { createBook } from './Api';
 
 //toast
 import { bookAdded } from './Toast/Toast';
@@ -12,15 +13,18 @@ const AddBook = () => {
     const [AAauthor, setAAauthor] = useState('');
     const [AApublisher, setAApublisher] = useState('');
     const [AAyear, setAAyear] = useState('');
+    const [AAgenre, setAAgenre] = useState('');
     const [AAcount, setAAcount] = useState('');
 
     const toast = (e) => {
         e.preventDefault();
+        createBook(AAbname,AAauthor,AApublisher,AAyear,AAgenre,AAcount)
         bookAdded();
         setAAbname('');
         setAAauthor('');
         setAApublisher('');
         setAAyear('');
+        setAAgenre('');
         setAAcount('');
     }
 
@@ -29,6 +33,7 @@ const AddBook = () => {
             <div className="sidebar">
                 <Sidebar />
             </div>
+
             <div className="addbook">
                 <div className="pagename">
                     <h3 className='hh3'>Add book</h3>
@@ -54,6 +59,7 @@ const AddBook = () => {
                                                 onChange={e => setAAbname(e.target.value)}
                                             />
                                         </div>
+                                        
                                         <div className="separator2">
                                             <label for="AAauthor">Author Name:</label>
                                             <input
@@ -100,6 +106,20 @@ const AddBook = () => {
                                     </div>
 
                                     <div className="separator1">
+                                    <div className="separator2">
+                                            <label for="AAcount">Genre:</label>
+                                            <input
+                                                type='text'
+                                                name='AAcount'
+                                                id='AAcount'
+                                                className='input'
+                                                placeholder='Enter genre'
+                                                required
+                                                value={AAgenre}
+                                                onChange={e => setAAgenre(e.target.value)}
+                                            />
+                                        </div>
+
                                         <div className="separator2">
                                             <label for="AAcount">Books Count:</label>
                                             <input

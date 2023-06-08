@@ -1,5 +1,4 @@
 .lendbook{
-    /* width: 75.4vw; */
     margin-left: 250px;
     align-self: self-end;
 }
@@ -12,15 +11,12 @@
     padding: 0;
 }
 .innerContainer{
-    /* height: 100vh; */
     width: 100%;    
-    /* align-items: center; */
     background-color: #0d0d0d;
 }
 .detailsContainer{
     display: flex;
     flex-direction: column;
-    /* height: 100%; */
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -36,7 +32,6 @@
 .sideTopic{
     align-self: center;
     margin: 5px;
-    /* margin-top: 15px; */
     text-decoration: underline;
 }
 .separator{
@@ -53,17 +48,10 @@
     text-align: start;
     margin: 5px 10px;
 }
-/* .h1{
-    color: #fff;
-    margin: 0;  
-    margin-bottom: 20px;
-    font-size: xx-large;
-} */
 
 .sform{
     display: flex;
     flex-direction: column;
-    /* margin: 5px; */
     align-items: start;
 }
 label{

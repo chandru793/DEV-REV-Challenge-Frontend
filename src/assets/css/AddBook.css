@@ -1,5 +1,4 @@
 .addbook{
-    /* width: 75.4vw; */
     margin-left: 250px;
     align-self: self-end;
 }
@@ -15,7 +14,6 @@
 .innerContainerA{
     height: 90vh;
     width: 100%;    
-    /* align-items: center; */
     background-color: #0d0d0d;
 }
 .detailsContainerA{

@@ -15,8 +15,8 @@ const Sidebar = () => {
                     <Link Link to="/lendbook" className='link'><h3>Lend Book</h3></Link>
                     <span className='line'></span>
                     <Link Link to="/status" className='link'><h3>Status</h3></Link>
-                    {/* <span className='line'></span>
-                <Link Link to="/search" className='link'><h3>Search</h3></Link> */}
+                    <span className='line'></span>
+                <Link Link to="/return" className='link'><h3>Return Book</h3></Link>
                 </div>
 
                 <div className="bottom">

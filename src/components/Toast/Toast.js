@@ -42,3 +42,17 @@ export function authFailed() {
     theme: "dark",
   });
 }
+
+//book returned
+export function returned() {
+  toast.success("Book returned successfully", {
+    position: "top-right",
+    autoClose: 2000,
+    hideProgressBar: true,
+    closeOnClick: false,
+    pauseOnHover: false,
+    draggable: false,
+    progress: undefined,
+    theme: "dark",
+  });
+}

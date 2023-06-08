@@ -9,6 +9,7 @@ const SignIn = () => {
     const [password, setPassword] = useState('');
     const [show, setshow] = useState(false);
 
+    //api signup
     async function registerUser(event) {
         event.preventDefault()
         const response = await fetch(`http://localhost:8080/api/signup`, {

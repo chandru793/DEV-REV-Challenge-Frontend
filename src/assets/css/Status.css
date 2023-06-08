@@ -1,5 +1,4 @@
 .status{
-    /* width: 75.4vw; */
     margin-left: 250px;
     align-self: self-end;
 }
@@ -14,7 +13,6 @@
 
 .search{
     width: 100%;
-    /* padding: 10px; */
 }
 .sform{
     display: flex;

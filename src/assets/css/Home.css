@@ -1,5 +1,4 @@
 .home{
-    /* width: 75.4vw; */
     margin-left: 250px;
     align-self: self-end;
     display: flex;
@@ -16,7 +15,6 @@
 .count{
     display: flex;
     flex-direction: row;
-    /* margin: 10px; */
     margin-top: 30px;
     justify-content: space-evenly;
 }
@@ -42,7 +40,6 @@
 .detailsContainerr{
     display: flex;
     flex-direction: column;
-    /* margin: 10px; */
     margin-top: 20px;
     justify-content: space-evenly;
 }

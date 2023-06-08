@@ -1,7 +1,6 @@
 .innerContainer{
     height: 100vh;
     width: 100%;    
-    /* align-items: center; */
     background-color: #0d0d0d;
 }
 .detailsContainer{
@@ -29,7 +28,6 @@
 .form{
     display: flex;
     flex-direction: column;
-    /* margin: 5px; */
     align-items: start;
 }
 label{

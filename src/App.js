@@ -9,6 +9,7 @@ import Home from './components/Home';
 import AddBook from './components/AddBook';
 import LendBook from './components/LendBook';
 import Status from './components/Status';
+import Return from './components/Return';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/addbook' element={<AddBook />} />
         <Route path='/lendbook' element={<LendBook />} />
-        <Route path='/status' element={<Status/>}/>
+        <Route path='/status' element={<Status />} />
+        <Route path='/return' element={<Return/>}/>
       </Routes>
 
       {/* Toast  */}
